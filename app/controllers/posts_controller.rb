@@ -9,8 +9,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post)
+    if @post.vision_image.attached?
+      tags = Vision.get_image_data(post_params[:vision_image])
+    else
+      tags = ["none"]
+    end
+    if @post.save
+      tags.each do |tag|
+        @post.tags.create(name: tag)
+      end
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   def index

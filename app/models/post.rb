@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :tags, dependent: :destroy
   
   has_one_attached :vision_image
   

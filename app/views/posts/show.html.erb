@@ -7,6 +7,11 @@
   <div>
     <%= image_tag @post.get_vision_image(200, 200) %>
   </div>
+  <div>
+    <% @post.tags.each do |tag| %>
+      <p><%= tag.name %></p>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to "編集（タイトル名のみ）", edit_post_path(@post) %>
