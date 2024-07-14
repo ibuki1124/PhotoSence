@@ -8,9 +8,12 @@
     <%= image_tag @post.get_vision_image(200, 200) %>
   </div>
   <div>
-    <% @post.tags.each do |tag| %>
-      <p><%= tag.name %></p>
-    <% end %>
+    <h3>Tags</h3>
+    <ul>
+      <% @post.tags.each do |tag| %>
+        <li><%= tag.name %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
 

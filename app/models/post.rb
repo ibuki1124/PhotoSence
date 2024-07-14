@@ -11,4 +11,5 @@ class Post < ApplicationRecord
     end
     vision_image.variant(resize_to_limit: [width, height]).processed
   end
+
 end
