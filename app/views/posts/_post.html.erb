@@ -1,0 +1,8 @@
+<% posts.each do |vision| %>
+  <div>
+    <%= link_to post_path(vision) do %>
+      <%= vision.title %> <br>
+      <%= image_tag vision.get_vision_image(400, 400) %>
+    <% end %>
+  </div>
+<% end %>

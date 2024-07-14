@@ -1,7 +1,13 @@
-<h2>マイページ</h2>
+<% if @user == current_user %>
+  <h2>マイページ</h2>
+<% end %>
 
 <h3><%= @user.name %></h3>
 
-<%= link_to "編集", edit_user_path(@user) %>
+<% if @user == current_user %>
+  <%= link_to "編集", edit_user_path(@user) %>
+<% end %>
+
+<%= render "posts/post", posts: @posts %>
 
 <%= link_to "ユーザ一覧へ", users_path %>
