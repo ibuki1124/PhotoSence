@@ -1,2 +1,10 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h2>投稿一覧</h2>
+
+<% @posts.each do |vision| %>
+  <div>
+    <%= link_to post_path(vision) do %>
+      <%= vision.title %> <br>
+      <%= image_tag vision.get_vision_image(400, 400) %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,2 +1,15 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h2>投稿</h2>
+
+<%= form_with model: @post do |f| %>
+  <div class="field">
+      <%= f.label :vision_image %><br>
+      <%= f.file_field :vision_image, accept: "image/*" %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.submit "投稿" %>
+  </div>
+<% end %>
