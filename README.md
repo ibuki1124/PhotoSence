@@ -1,24 +1,20 @@
-# README
+# 画像投稿時に画像を分析し自動的にタグを付与するアプリケーション
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
 
-Things you may want to cover:
+画像を投稿する際に、GoogleのCloud Vision APIを用いて画像の分析を行い、特徴をラベルとして5個抽出し、
+それを投稿のタグとして付与するアプリケーションを制作しました。
 
-* Ruby version
+### 開発環境
 
-* System dependencies
+Amazon Web Service Cloud9 (AWS Cloud9)
 
-* Configuration
+### プログラミング言語・フレームワーク
 
-* Database creation
+* Ruby (version 3.1.2)
+* Ruby on Rails (version 6.1.7.8)
 
-* Database initialization
+### Web API
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Google Cloud Vision API  
+公式URL：https://cloud.google.com/vision?hl=ja
