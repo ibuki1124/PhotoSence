@@ -3,6 +3,9 @@ class PostsController < ApplicationController
 
   def top
   end
+  
+  def search
+  end
 
   def new
     @post = Post.new
@@ -24,22 +27,6 @@ class PostsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def search
-    @q = Tag.ransack(params[:q])
-    @results = @q.result
-    # 検索でヒットした投稿のidを配列に入れる
-    @post_id = []
-    @results.each do |a|
-      @post_id.push(a.post_id)
-    end
-    # 重複している投稿idを消し投稿を取得し配列に入れる
-    @post = []
-    @post_id.uniq.each do |id|
-      @post.push(Post.find(id))
-    end
-
   end
 
   def index

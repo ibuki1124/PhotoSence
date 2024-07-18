@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_search
   before_action :authenticate_user!, except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
   
@@ -14,5 +15,20 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+  end
+  
+  def set_search
+    @q = Tag.ransack(params[:q])
+    @results = @q.result
+    # 検索でヒットした投稿のidを配列に入れる
+    @post_id = []
+    @results.each do |a|
+      @post_id.push(a.post_id)
+    end
+    # 重複している投稿idを消し投稿を取得し配列に入れる
+    @post = []
+    @post_id.uniq.each do |id|
+      @post.push(Post.find(id))
+    end
   end
 end
