@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :is_post_user?, only: [:edit, :update]
+  
   def top
   end
 
@@ -50,11 +52,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.update(post_params)
     redirect_to post_path(@post)
   end
@@ -68,5 +68,12 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :vision_image)
+  end
+  
+  def is_post_user?
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      redirect_to post_path(@post)
+    end
   end
 end

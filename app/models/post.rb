@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   
   has_one_attached :vision_image
   
+  validates :title, presence: true
+  validates :vision_image, presence: true
+  
   def get_vision_image(width, height)
     unless vision_image.attached?
       file_path = Rails.root.join("app/assets/images/no.jpg")
