@@ -1,5 +1,7 @@
 <h2>タイトル変更</h2>
 
+<%= render "layouts/error", error: @post %>
+
 <%= form_with model: @post do |f| %>
   <div class="field">
     <%= f.label :title %><br>

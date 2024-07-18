@@ -1,5 +1,7 @@
 <h2>プロフィール編集</h2>
 
+<%= render "layouts/error", error: @user %>
+
 <%= form_with model: @user do |f| %>
   <div class="field">
     <%= f.label :name %><br>

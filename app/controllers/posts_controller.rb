@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :is_post_user?, only: [:edit, :update]
-  
+
   def top
   end
 
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post_id.uniq.each do |id|
       @post.push(Post.find(id))
     end
-    
+
   end
 
   def index
@@ -55,8 +55,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -69,7 +72,7 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :vision_image)
   end
-  
+
   def is_post_user?
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
