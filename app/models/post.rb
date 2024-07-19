@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   
   has_one_attached :vision_image
   
-  validates :title, presence: true
+  validates :title, presence: true, length: {maximum: 25}
   validates :vision_image, presence: true
   
   def get_vision_image(width, height)
