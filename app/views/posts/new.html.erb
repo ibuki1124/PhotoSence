@@ -1,17 +1,24 @@
-<h2>投稿</h2>
-
-<%= render "layouts/error", error: @post %>
-
-<%= form_with model: @post do |f| %>
-  <div class="field">
-      <%= f.label :vision_image %><br>
-      <%= f.file_field :vision_image, accept: "image/*" %>
+<div class="row justify-content-center align-items-center">
+  <div class="col col-md-8 col-lg-6 mx-auto">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h2 class="card-title text-center">投稿</h2>
+        <hr>
+        <%= render "layouts/error", error: @post %>
+        <%= form_with model: @post do |f| %>
+          <div class="form-group">
+              <%= f.label :vision_image %><br>
+              <%= f.file_field :vision_image, accept: "image/*", class: "form-control-file" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "投稿", class: "btn btn-lg w-100 btn-outline-success mt-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.submit "投稿" %>
-  </div>
-<% end %>
+</div>
