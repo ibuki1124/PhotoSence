@@ -1,11 +1,11 @@
-<div class="row mx-auto">
+<div class="w-100 text-center">
   <% if @user == current_user %>
-    <h2 class="mx-auto">マイページ</h2>
+    <h2>マイページ</h2>
   <% else %>
-    <h2 class="mx-auto"><%= @user.name %>のページ</h2>
+    <h2><%= @user.name %>のページ</h2>
   <% end %>
 </div>
-<div class="row">
+<div class="w-100 row">
   <div class="col-sm-3 text-center mb-5 position-relative">
     <div class="sticky-top">
       <h2>プロフィール</h2>
