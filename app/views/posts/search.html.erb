@@ -1,13 +1,6 @@
-<h2>
-  検索結果
-  <span><%= params[:q][:name_cont] %></span>
+<h2 class="text-center">
+  <%= @post.count %>件の検索結果：
+  <span>#<%= params[:q][:name_cont] %></span>
 </h2>
 
-<% @post.each do |vision| %>
-  <div>
-    <%= link_to post_path(vision) do %>
-      <%= vision.title %> <br>
-      <%= image_tag vision.get_vision_image(400, 400) %>
-    <% end %>
-  </div>
-<% end %>
+<%= render "posts/post", posts: @post %>

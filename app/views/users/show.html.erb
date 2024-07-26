@@ -1,13 +1,24 @@
-<% if @user == current_user %>
-  <h2>マイページ</h2>
-<% end %>
-
-<h3><%= @user.name %></h3>
-
-<% if @user == current_user %>
-  <%= link_to "編集", edit_user_path(@user) %>
-<% end %>
-
-<%= render "posts/post", posts: @posts %>
-
-<%= link_to "ユーザ一覧へ", users_path %>
+<div class="container">
+  <div class="row mb-3">
+    <% if @user == current_user %>
+      <h2 class="mx-auto">マイページ</h2>
+    <% else %>
+      <h2 class="mx-auto"><%= @user.name %>のページ</h2>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col col-sm-3 text-center">
+      <h2>プロフィール</h2>
+      <% if @user == current_user %>
+        <h3><%= @user.name %></h3>
+        <%= link_to "編集", edit_user_path(@user) %>
+      <% else %>
+        <h3><%= @user.name %></h3>
+      <% end %>
+    </div>
+    <div class="col col-sm-9">
+      <h2 class="text-center">投稿</h2>
+      <%= render "posts/post", posts: @posts %>
+    </div>
+  </div>
+</div>
