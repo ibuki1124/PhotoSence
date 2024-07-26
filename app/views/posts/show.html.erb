@@ -3,7 +3,7 @@
     <h2 class="text-wrap"><%= @post.title %></h2>
     <div class="text-nowrap ml-auto mr-3">
       <% if @post.user_id == current_user.id %>
-        <%= link_to "タイトル変更", edit_post_path(@post), class: "text-info" %>｜
+        <%= link_to "タイトル編集", edit_post_path(@post), class: "text-info" %>｜
         <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "text-danger" %>
       <% end %>
     </div>
