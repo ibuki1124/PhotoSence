@@ -7,15 +7,33 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-sm-3 text-center mb-5">
-      <h2>プロフィール
-      </h2>
-      <h3><%= @user.name %></h3>
-      <% if @user == current_user %>
-        <%= link_to edit_user_path(@user), class: "d-block btn btn-outline-secondary mt-3 mx-3" do %>
-          <span><i class="fa-solid fa-user-pen"></i>編集</span>
-        <% end %>
-      <% end %>
+    <div class="col-sm-3 text-center mb-5 position-relative">
+      <div class="sticky-top">
+        <h2>プロフィール</h2>
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <th>ユーザ名</th>
+          </thead>
+          <tbody>
+            <tr><td><%= @user.name %></td></tr>
+            <% if @user == current_user %>
+              <tr>
+                <td>
+                  <%= link_to edit_user_path(@user), class: "d-block btn btn-outline-secondary" do %>
+                    <span><i class="fa-solid fa-user-pen"></i>編集</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <thead class="thead-light">
+            <th>総投稿数</th>
+          </thead>
+          <tbody>
+            <td><%= @user.posts.count %>件</td>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-sm-9">
       <h2 class="text-center">投稿</h2>
