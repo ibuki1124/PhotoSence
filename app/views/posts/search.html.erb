@@ -1,6 +1,7 @@
-<h2 class="text-center">
+<h2 class="row mx-auto">
   <%= @post.count %>件の検索結果：
   <span>#<%= params[:q][:name_cont] %></span>
 </h2>
-
-<%= render "posts/post", posts: @post %>
+<div class="row">
+  <%= render "posts/post", posts: @post %>
+</div>

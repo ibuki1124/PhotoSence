@@ -1,31 +1,29 @@
-<div class="row">
-  <div class="col-10 mx-auto">
-    <div class="d-md-flex align-items-center mb-2 border-bottom">
-      <h2 class="text-wrap"><%= @post.title %></h2>
-      <div class="text-nowrap ml-auto mr-3">
-        <% if @post.user_id == current_user.id %>
-          <%= link_to "タイトル変更", edit_post_path(@post), class: "text-info" %>｜
-          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "text-danger" %>
-        <% end %>
-      </div>
+<div class="col-10 mx-auto">
+  <div class="d-md-flex align-items-center mb-2 border-bottom">
+    <h2 class="text-wrap"><%= @post.title %></h2>
+    <div class="text-nowrap ml-auto mr-3">
+      <% if @post.user_id == current_user.id %>
+        <%= link_to "タイトル変更", edit_post_path(@post), class: "text-info" %>｜
+        <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "text-danger" %>
+      <% end %>
     </div>
-    <div class="text-center my-3">
-      <%= image_tag @post.get_vision_image(600,600), class: "img-fluid" %>
-    </div>
-    <div class="px-3">
-      <h3>投稿者</h3>
-      <h6 class="btn btn-info">
-        <%= link_to user_path(@post.user), class: "text-light" do %>
-          <i class="fa-solid fa-user"></i>
-          <%= @post.user.name %>
-        <% end %>
-      </h6>
-      <h3>タグ</h3>
-      <div class="list-group list-group-horizontal d-inline-flex flex-wrap">
-        <% @post.tags.each do |tag| %>
-          <%= link_to "# #{tag.name}", search_posts_path(@q, :"q[name_cont]" => "#{tag.name}"), class: "badge badge-primary mx-2 p-2 h6 text-nowrap" %>
-        <% end %>
-      </div>
+  </div>
+  <div class="text-center my-3">
+    <%= image_tag @post.get_vision_image(600,600), class: "img-fluid" %>
+  </div>
+  <div class="px-3">
+    <h3>投稿者</h3>
+    <h6 class="btn btn-info">
+      <%= link_to user_path(@post.user), class: "text-light" do %>
+        <i class="fa-solid fa-user"></i>
+        <%= @post.user.name %>
+      <% end %>
+    </h6>
+    <h3>タグ</h3>
+    <div class="list-group list-group-horizontal d-inline-flex flex-wrap">
+      <% @post.tags.each do |tag| %>
+        <%= link_to "# #{tag.name}", search_posts_path(@q, :"q[name_cont]" => "#{tag.name}"), class: "badge badge-primary mx-2 p-2 h6 text-nowrap" %>
+      <% end %>
     </div>
   </div>
 </div>

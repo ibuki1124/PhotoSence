@@ -1,32 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col col-lg-10 mx-auto text-center">
-      <h2>ユーザ一覧</h2>
-      <table class="table table-bordered table-hover">
-        <thead class="thead-light">
-          <th scape="col">#</th>
-          <th scape="col">ユーザ名</th>
-          <th scape="col">投稿数</th>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <th scape="row" class="table-secondary">
-                <%= link_to user_path(user), class: "text-dark" do %>
-                  <%= user.id %>
-                <% end %>
-              </th>
-              <td class="text-left">
-                <%= link_to user_path(user) do %>
-                  <i class="fa-solid fa-up-right-from-square mr-1"></i>
-                  <%= user.name %>
-                <% end %>
-              </td>
-              <td><%= user.posts.count %> 件</td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="col col-lg-10 mx-auto text-center">
+  <h2>ユーザ一覧</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-light">
+      <th scape="col">#</th>
+      <th scape="col">ユーザ名</th>
+      <th scape="col">投稿数</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scape="row" class="table-secondary">
+            <%= link_to user_path(user), class: "text-dark" do %>
+              <%= user.id %>
+            <% end %>
+          </th>
+          <td class="text-left">
+            <%= link_to user_path(user) do %>
+              <i class="fa-solid fa-up-right-from-square mr-1"></i>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= user.posts.count %> 件</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
