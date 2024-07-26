@@ -6,11 +6,11 @@
       <%= render "layouts/error", error: @post %>
       <%= form_with model: @post do |f| %>
         <div class="form-group">
-            <%= f.label :vision_image %><br>
+            <%= f.label :vision_image, "画像" %><br>
             <%= f.file_field :vision_image, accept: "image/*", class: "form-control-file" %>
         </div>
         <div class="form-group">
-          <%= f.label :title %><br>
+          <%= f.label :title, "タイトル" %><br>
           <%= f.text_field :title, class: "form-control" %>
         </div>
         <div class="form-group">
