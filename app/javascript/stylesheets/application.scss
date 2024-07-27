@@ -1,1 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
+
+.field_with_errors {
+  width: 100%;
+  display: inline-block;
+  flex-grow: 1;
+  input {
+    @extend .is-invalid;
+  }
+}

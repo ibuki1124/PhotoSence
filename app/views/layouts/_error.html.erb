@@ -1,8 +1,10 @@
 <% if error.errors.any? %>
-  <%= error.errors.count %>件のエラーが発生しました。
-  <ul>
-    <% error.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="list-group list-group-item-danger p-2 my-1">
+    <%= error.errors.count %>件のエラーが発生しました。
+    <ul>
+      <% error.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
