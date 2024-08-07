@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :tags, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   has_one_attached :vision_image
   
@@ -14,5 +15,8 @@ class Post < ApplicationRecord
     end
     vision_image.variant(resize_to_limit: [width, height]).processed
   end
-
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end

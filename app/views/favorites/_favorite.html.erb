@@ -1,0 +1,11 @@
+<% if favorite.favorited_by?(current_user) %>
+  <span class="h5 text-danger m-0">
+    <%= link_to "♥", post_favorite_path(favorite), method: :delete, class: "text-danger", style:"text-decoration: none;" %>
+    <%= favorite.favorites.count %>
+  </span>
+<% else %>
+  <span class="h5 m-0">
+    <%= link_to "♡", post_favorite_path(favorite), method: :post, class: "text-dark", style:"text-decoration: none;" %>
+    <%= favorite.favorites.count %>
+  </span>
+<% end %>

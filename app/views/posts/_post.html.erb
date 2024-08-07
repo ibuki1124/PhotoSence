@@ -10,12 +10,15 @@
         <div class="w-100">
           <h3 class="card-title text-truncate"><%= link_to "#{vision.title}", post_path(vision), class: "text-dark" %></h3>
           <hr>
-          <h6 class="btn btn-info text-truncate w-100">
-            <%= link_to user_path(vision.user), class: "text-light" do %>
-              <i class="fa-solid fa-user"></i>
-              <%= vision.user.name %>
-            <% end %>
-          </h6>
+          <div class="w-100 d-flex align-items-center justify-content-between flex-wrap">
+            <h6 class="btn btn-info text-truncate w-75 mb-0">
+              <%= link_to user_path(vision.user), class: "text-light" do %>
+                <i class="fa-solid fa-user"></i>
+                <%= vision.user.name %>
+              <% end %>
+            </h6>
+            <%= render "favorites/favorite", favorite: vision %>
+          </div>
         </div>
       </div>
     </div>

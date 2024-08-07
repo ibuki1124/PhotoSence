@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "posts#top"
   
   resources :posts do
+    resource :favorite, only: [:create, :destroy]
     collection do
       get "search"
     end
