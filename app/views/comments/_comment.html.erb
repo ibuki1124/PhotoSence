@@ -1,5 +1,6 @@
 <%= form_with model: [post, comment] do |f| %>
-    <h3>コメント</h3>
+  <h3>コメント</h3>
+  <%= render "layouts/error", error: comment %>
   <div class="form-group mb-1">
     <%= f.text_area :comment , rows: "3", placeholder: "200文字以内", class: "form-control" %>
   </div>
