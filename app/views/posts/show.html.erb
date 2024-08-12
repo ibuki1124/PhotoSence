@@ -30,5 +30,6 @@
         <%= link_to "# #{tag.name}", search_posts_path(@q, :"q[name_cont]" => "#{tag.name}"), class: "badge badge-primary mx-2 p-2 h6 text-nowrap" %>
       <% end %>
     </div>
+    <%= render "comments/comment", {post: @post, comment: @comment}  %>
   </div>
 </div>

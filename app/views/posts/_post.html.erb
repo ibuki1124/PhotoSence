@@ -11,13 +11,21 @@
           <h3 class="card-title text-truncate"><%= link_to "#{vision.title}", post_path(vision), class: "text-dark" %></h3>
           <hr>
           <div class="w-100 d-flex align-items-center justify-content-between flex-wrap">
-            <h6 class="btn btn-info text-truncate w-75 mb-0">
+            <h6 class="btn btn-info text-truncate w-50 mb-0">
               <%= link_to user_path(vision.user), class: "text-light" do %>
                 <i class="fa-solid fa-user"></i>
                 <%= vision.user.name %>
               <% end %>
             </h6>
-            <%= render "favorites/favorite", favorite: vision %>
+            <div>
+              <%= render "favorites/favorite", favorite: vision %>
+              <span class="h5 ml-1">
+                <%= link_to post_path(vision), class: "text-dark" do %>
+                  <i class="fa-regular fa-comment"></i>
+                  <%= vision.comments.count %>
+                <% end %>
+              </span>
+            </div>
           </div>
         </div>
       </div>

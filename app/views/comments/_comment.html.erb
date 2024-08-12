@@ -1,0 +1,28 @@
+<%= form_with model: [post, comment] do |f| %>
+    <h3>コメント</h3>
+  <div class="form-group mb-1">
+    <%= f.text_area :comment , rows: "3", placeholder: "200文字以内", class: "form-control" %>
+  </div>
+  <div class="form-group text-right">
+    <%= f.submit "送信", class: "btn btn-md btn-success px-5" %>
+  </div>
+<% end %>
+<div>
+  <p><%= post.comments.count %>件のコメント</p>
+  <% post.comments.each do |post_comment| %>
+    <div class="d-flex align-items-center border-bottom my-3 py-3 bg-light">
+      <p class="ml-1 mr-3 mb-0 ">
+        <% if post_comment.user == post.user %>
+          <span class="d-block text-danger" style="font-size: 10px;">投稿者</span>
+        <% end %>
+        <%= post_comment.user.name %>：
+      </p>
+      <p class="mb-0"><%= post_comment.comment %></p>
+      <% if post_comment.user_id == current_user.id %>
+        <%= link_to post_comment_path(post, post_comment), method: :delete, "data-confirm" => "削除しますか？", class: "ml-auto mr-3 text-nowrap text-danger" do %>
+          <i class="fa-solid fa-trash-can fa-lg"></i>
+        <% end%>
+      <% end %>
+    </div>
+  <% end %>
+</div>
