@@ -16,7 +16,7 @@ Amazon Web Service Cloud9 (AWS Cloud9)
 
 ### Web API
 
-Google Cloud Vision API
+Google Cloud Vision API   
 公式URL：https://cloud.google.com/vision?hl=ja
 
 ### 利用方法
