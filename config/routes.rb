@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   
   resources :posts do
     resource :favorite, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+    post "/", to: "comments#create", as: "comments"
+    resources :comments, only: [:destroy]
     collection do
       get "search"
     end
