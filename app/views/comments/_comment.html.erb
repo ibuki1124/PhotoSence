@@ -1,4 +1,4 @@
-<%= form_with model: [post, comment] do |f| %>
+<%= form_with model: [post, comment], url: post_comments_path(post, anchor: "form"), id: "form" do |f| %>
   <h3>コメント</h3>
   <%= render "layouts/error", error: comment %>
   <div class="form-group mb-1">
