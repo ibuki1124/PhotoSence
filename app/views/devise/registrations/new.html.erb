@@ -1,41 +1,43 @@
-<div class="col col-md-8 mx-auto border mt-5 bg-light">
-  <h2 class="text-center my-4">サインアップ</h2>
-  <hr>
-  <%= render "layouts/error", error: @user %>
-  <%= form_with model: @user, url: user_registration_path do |f| %>
-    <div class="form-group row">
-      <div class="col-sm-3 col-form-label">
-        <%= f.label :name, "ユーザ名" %>
+<div class="col col-md-8 m-5 mx-sm-auto border bg-light">
+  <div class="m-3">
+    <h2 class="text-center my-4">サインアップ</h2>
+    <hr>
+    <%= render "layouts/error", error: @user %>
+    <%= form_with model: @user, url: user_registration_path do |f| %>
+      <div class="form-group row">
+        <div class="col-sm-3 col-form-label">
+          <%= f.label :name, "ユーザ名" %>
+        </div>
+        <div class="col-sm">
+          <%= f.text_field :name, placeholder: "20文字以内" , class: "form-control" %>
+        </div>
       </div>
-      <div class="col-sm">
-        <%= f.text_field :name, placeholder: "20文字以内" , class: "form-control" %>
+      <div class="form-group row">
+        <div class="col-sm-3 col-form-label">
+          <%= f.label :email, "メールアドレス" %>
+        </div>
+        <div class="col-sm">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "example@example.com", class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-3 col-form-label">
-        <%= f.label :email, "メールアドレス" %>
+      <div class="form-group row">
+        <div class="col-sm-3 col-form-label">
+          <%= f.label :password, "パスワード" %>
+        </div>
+        <div class="col-sm">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上" , class: "form-control" %>
+        </div>
       </div>
-      <div class="col-sm">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "example@example.com", class: "form-control" %>
+      <div class="form-group row">
+        <%= f.label :password_confirmation, "パスワード（確認）" , class: "col-sm-3 col-form-label" %>
+        <div class="col-sm">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-3 col-form-label">
-        <%= f.label :password, "パスワード" %>
+      <div class="form-group d-flex justify-content-between">
+        <div><%= render "devise/shared/links" %></div>
+        <%= f.submit "サインアップ", class: "btn btn-success" %>
       </div>
-      <div class="col-sm">
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上" , class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group row">
-      <%= f.label :password_confirmation, "パスワード（確認）" , class: "col-sm-3 col-form-label" %>
-      <div class="col-sm">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group d-flex justify-content-between">
-      <div><%= render "devise/shared/links" %></div>
-      <%= f.submit "サインアップ", class: "btn btn-success" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
