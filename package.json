@@ -20,9 +20,3 @@
     "webpack-dev-server": "^3"
   }
 }
-
-{
-  "scripts": {
-    "start": "bundle exec rails server -p $PORT"
-  }
-}
