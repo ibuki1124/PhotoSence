@@ -37,6 +37,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+  rescue ActiveRecord::RecordNotFound #存在しない投稿ページをひらこうとした場合
+    redirect_to posts_path
   end
 
   def edit

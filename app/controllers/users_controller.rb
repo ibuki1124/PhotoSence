@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+  rescue ActiveRecord::RecordNotFound #存在しないユーザページをひらこうとした場合
+    redirect_to user_path(current_user)
   end
 
   def index
