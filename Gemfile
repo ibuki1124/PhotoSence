@@ -63,3 +63,5 @@ gem "devise"
 gem 'dotenv-rails'
 
 gem "ransack"
+
+gem "aws-sdk-s3", require: false
