@@ -8,3 +8,10 @@
     @extend .is-invalid;
   }
 }
+
+.posts::after{
+  display: block;
+  width: 300px;
+  content: "";
+  margin: 0 auto;
+}
