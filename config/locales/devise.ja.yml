@@ -29,6 +29,8 @@ ja:
       post:
         title: タイトル
         vision_image: 画像
+      comment:
+        comment: コメント
     models:
       user: ユーザー
   devise:
