@@ -1,12 +1,12 @@
-<div class="col col-md-8 m-5 mx-sm-auto border bg-light">
+<div class="col col-md-8 mx-3 mt-5 mx-sm-auto border bg-light">
   <div class="m-3">
-    <h2 class="text-center my-4">サインアップ</h2>
+    <h2 class="text-center my-4"><%= t(".sign_up") %></h2>
     <hr>
     <%= render "layouts/error", error: @user %>
-    <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= form_with model: @user, url: user_registration_path, class: "mt-2" do |f| %>
       <div class="form-group row">
         <div class="col-sm-3 col-form-label">
-          <%= f.label :name, "ユーザ名" %>
+          <%= f.label :name %>
         </div>
         <div class="col-sm">
           <%= f.text_field :name, placeholder: "20文字以内" , class: "form-control" %>
@@ -14,7 +14,7 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-3 col-form-label">
-          <%= f.label :email, "メールアドレス" %>
+          <%= f.label :email %>
         </div>
         <div class="col-sm">
           <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "example@example.com", class: "form-control" %>
@@ -22,21 +22,21 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-3 col-form-label">
-          <%= f.label :password, "パスワード" %>
+          <%= f.label :password %>
         </div>
         <div class="col-sm">
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上" , class: "form-control" %>
         </div>
       </div>
       <div class="form-group row">
-        <%= f.label :password_confirmation, "パスワード（確認）" , class: "col-sm-3 col-form-label" %>
+        <%= f.label :password_confirmation, class: "col-sm-3 col-form-label" %>
         <div class="col-sm">
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
       </div>
-      <div class="form-group d-flex justify-content-between">
-        <div><%= render "devise/shared/links" %></div>
-        <%= f.submit "サインアップ", class: "btn btn-success" %>
+      <div class="form-group d-flex justify-content-between align-items-center flex-wrap">
+        <div class="mt-2 mr-2"><%= render "devise/shared/links" %></div>
+        <%= f.submit t(".sign_up"), class: "btn btn-success ml-auto mt-2" %>
       </div>
     <% end %>
   </div>
