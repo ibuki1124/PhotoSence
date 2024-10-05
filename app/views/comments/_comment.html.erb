@@ -9,21 +9,27 @@
   </div>
 <% end %>
 <div>
-  <p><%= post.comments.count %>件のコメント</p>
+  <div><i class="fa-regular fa-comment"></i> <%= post.comments.count %>件のコメント</div>
   <% post.comments.each do |post_comment| %>
-    <div class="d-flex align-items-center border-bottom my-3 py-3 bg-light">
-      <p class="ml-1 mr-3 mb-0 ">
-        <% if post_comment.user == post.user %>
-          <span class="d-block text-danger" style="font-size: 10px;">投稿者</span>
+    <div class="d-flex flex-column border my-2 py-2 bg-light shadow-sm">
+      <div class="d-flex justify-content-between align-items-center mx-2 mb-2">
+        <div style="font-size: 14px;">
+          <% if post_comment.user == post.user %>
+            <span class="d-block text-danger" style="font-size: 10px;">投稿者</span>
+          <% end %>
+          <div class="text-wrap text-break">
+            <%= link_to user_path(post_comment.user), class: "text-info" do %>
+              <i class="fa-solid fa-user"></i> <%= post_comment.user.name %>
+            <% end %>
+          </div>
+        </div>
+        <% if post_comment.user_id == current_user.id || post.user == current_user %>
+          <%= link_to post_comment_path(post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "text-nowrap text-danger" do %>
+            <i class="fa-solid fa-trash-can fa-lg ml-1"></i>
+          <% end %>
         <% end %>
-        <%= post_comment.user.name %>：
-      </p>
-      <p class="mb-0"><%= post_comment.comment %></p>
-      <% if post_comment.user_id == current_user.id %>
-        <%= link_to post_comment_path(post, post_comment), method: :delete, "data-confirm" => "削除しますか？", class: "ml-auto mr-3 text-nowrap text-danger" do %>
-          <i class="fa-solid fa-trash-can fa-lg"></i>
-        <% end%>
-      <% end %>
+      </div>
+      <div class="mx-2 p-2 bg-white border rounded"><%= simple_format(post_comment.comment, class: "mb-0 text-break") %></div>
     </div>
   <% end %>
 </div>
