@@ -12,6 +12,8 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"; 
+import './image_preview'
+import './image_drop'
 
 Rails.start()
 Turbolinks.start()

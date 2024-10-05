@@ -6,8 +6,36 @@
       <%= render "layouts/error", error: @post %>
       <%= form_with model: @post do |f| %>
         <div class="form-group">
-            <%= f.label :vision_image, "画像" %><br>
-            <%= f.file_field :vision_image, accept: "image/*", class: "form-control-file" %>
+          <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
+            <%= f.label :vision_image, "画像", class: "m-0" %>
+            <!-- Button trigger modal -->
+            <button id="previewBtn" type="button" class="btn btn-primary btn-sm" style=" display: none;" data-toggle="modal" data-target="#imagePreview">
+              画像表示 <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="imagePreview" tabindex="-1" role="dialog" aria-labelledby="imagePreviewTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="imagePreviewTitle">画像のプレビュー</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <img id="preview" class="img-fluid mx-auto" style="display: none;">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%= f.file_field :vision_image, accept: "image/*", class: "form-control-file", id: "fileInput"%>
+        </div>
+        <div id="drop-area" class="mt-3 px-2 py-3 border rounded text-center d-none d-lg-block">
+          <span>ここに画像をﾄﾞﾗｯｸﾞ&ﾄﾞﾛｯﾌﾟ</span>
         </div>
         <div class="form-group">
           <%= f.label :title, "タイトル" %><br>
