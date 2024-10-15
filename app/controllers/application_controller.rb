@@ -25,10 +25,9 @@ class ApplicationController < ActionController::Base
     @results.each do |a|
       @post_id.push(a.post_id)
     end
-    # 重複している投稿idを消し投稿を取得し配列に入れる
-    @post = []
-    @post_id.uniq.each do |id|
-      @post.push(Post.find(id))
-    end
+    # 重複している投稿idを消し、降順にソートする
+    @post_id = @post_id.uniq.sort.reverse
+    # ソートされた投稿idを使用して投稿を取得し配列に入れる
+    @post = @post_id.map { |id| Post.find(id) }
   end
 end

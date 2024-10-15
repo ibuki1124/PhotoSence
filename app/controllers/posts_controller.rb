@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Tag.ransack(params[:q])
-    @posts = Post.all
+    @posts = Post.order(id: "DESC")
   end
 
   def show
